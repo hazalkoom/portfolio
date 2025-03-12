@@ -1,5 +1,16 @@
+[
 {
-    "title": "My Portfolio Website",
-    "description": "A portfolio to showcase my projects.",
-    "link": "."
+    "title": "library management system",
+    "description": "A system to manage library books, users, and borrowing records.",
+    "image": "portfolio/images/libr.png",
+    "link": "https://github.com/hazalkoom/library-management-system"
+},
+
+{
+    "title": "College E Library",
+    "description": "A system to manage college lectures and books",
+    "image": "portfolio/images/colle.png",
+    "link": "https://github.com/hazalkoom/college-E-library"
 }
+
+]
