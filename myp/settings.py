@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f_16zsbeen1ns_3kbbns@muik-bgz=ql_gy$mbskckwp^k^9fd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -124,3 +125,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"  # Use Gmail's SMTP server
+EMAIL_PORT = 587  # Port for TLS encryption
+EMAIL_USE_TLS = True  # Secure the connection
+EMAIL_HOST_USER = "mwhamd345@gmail.com"  # ⬅️ Replace with your Gmail address
+EMAIL_HOST_PASSWORD = "pcfu yeez mvkf czcs" #⬅️ Replace with your Gmail App Password

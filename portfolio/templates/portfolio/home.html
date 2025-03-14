@@ -23,7 +23,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm">
         <div class="container">
-            <a class="navbar-brand text-light fw-bold" href="#">Hazalkoom's Portfolio</a>
+            <a class="navbar-brand text-light fw-bold" href="{% url 'contact' %}">Hazalkoom's Portfolio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,26 +36,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About Me</a>
                     </li>
+                    <li class="nav-item">
+                    <button id="darkModeToggle" class="nav-link">🌙 Dark Mode</button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container text-center">
+        <div class="container">
             <div class="row align-items-center">
-                <!-- Left Side: Image -->
-                <div class="col-md-4">
-                    <img src="{% static 'portfolio/images/me.jpg' %}" alt="Mohamed Ahmed" class="hero-img img-fluid">
+                <!-- Left Side: Text -->
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="fw-bold fade-in">Hello, I'm <span style="color: yellow;">Mohamed Ahmed</span></h1>
+                    <p class="fade-in" style="animation-delay: 0.3s;">A passionate backend developer.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/hazalkoom" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mohamed-ahmed-mahmoud-766912268/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://instagram.com/mohawksq11" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
     
-                <!-- Right Side: Text (Same as Before) -->
-                <div class="col-md-8">
-                    <h1 class="fw-bold" data-aos="fade-up">
-                        Hello, I'm <span style="color: yellow;">Mohamed Ahmed</span>
-                    </h1>
-                    <p data-aos="fade-up" data-aos-delay="200">A passionate backend developer.</p>
+                <!-- Right Side: Image -->
+                <div class="col-lg-6 text-center">
+                    <img src="{% static 'portfolio/images/profile.jpg' %}" alt="My Photo" class="profile-pic fade-in">
                 </div>
             </div>
         </div>
@@ -127,26 +132,45 @@
     </section>
 
     <!-- Contact Section (Hidden by Default) -->
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-4" data-aos="fade-up">Contact Me</h2>
-            <form class="w-50 mx-auto" data-aos="fade-up" data-aos-delay="100">
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Your Email" required>
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Send</button>
-            </form>
-        </div>
+    <section id="contact" style="display: none;"> <!-- Hidden initially -->
+        <h2>Contact Me</h2>
+        <form method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+            
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+    
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+    
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+    
+            <button type="submit">Send Message</button>
+        </form>
+    
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
     </section>
+    
+    
 
     <!-- Footer -->
     <footer class="text-center py-3 bg-dark text-light">
+        <p>Connect with me: 
+            <a href="https://github.com/hazalkoom" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-ahmed-mahmoud-766912268/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/mohawksq11" target="_blank"><i class="fab fa-instagram"></i></a>
+        </p>
         <p>© 2025 Mohamed Ahmed. All rights reserved.</p>
     </footer>
 
