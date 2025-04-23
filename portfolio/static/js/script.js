@@ -29,3 +29,29 @@ if (localStorage.getItem("darkMode") === "enabled") {
 if (window.location.search.includes("success=true")) {
     alert("Message sent successfully!");
 }
+
+
+
+function createStars() {
+    const container = document.createElement('div');
+    container.id = 'stars-container';
+    document.body.appendChild(container);
+  
+    const numberOfStars = 120;
+    for (let i = 0; i < numberOfStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+  
+      const size = Math.random() * 2 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+  
+      container.appendChild(star);
+    }
+  }
+  
+  window.addEventListener('DOMContentLoaded', createStars);
+  
